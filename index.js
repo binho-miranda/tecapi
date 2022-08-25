@@ -1,7 +1,15 @@
 import express from "express";
+import { ler } from "./src/aluno.js";
 
 const app = express();
 const porta = 3000;
+
+// Configurando suporte ao formato JSON
+app.use(express.json());
+
+// Configurando suporte a dados de inputs de formulários
+app.use(express.urlencoded({extended : true}) );
+
 
 
 // ROTAS
@@ -13,7 +21,8 @@ app.get('/', (req, res) => {
 
 // Rota (endpoint) para exibir todos os alunos
 app.get('/alunos', (req, res) => {
-    res.send(`Exibe TODOS os alunos`);
+    // res.send(`Exibe TODOS os alunos`);
+    ler(res);
 });
 
 // Rota (endpoint) para exibir um único aluno
@@ -42,8 +51,8 @@ app.delete('/alunos/:id', (req, res) => {
 });
 
 
-
 // Configurando o servidor
 app.listen(porta, () => {
     console.log('Servidor express rodando...');
 });
+
