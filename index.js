@@ -2,11 +2,13 @@ import express from "express";
 import cors from "cors";
 import { ler, inserir, lerUm, atualizar, excluir } from "./src/aluno.js";
 
+
 const app = express();
 const porta = process.env.PORT || 3000;
 
-// configurando requisições de diferentes origens
+// Suporte a CORS - permite acesso através das aplicações
 app.use(cors());
+
 
 // Configurando suporte ao formato JSON
 app.use(express.json());
